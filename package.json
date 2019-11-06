@@ -1,6 +1,6 @@
 {
   "name": "vh-variable",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The package solves the problem with height conversion on mobile phones",
   "main": "dist/main.js",
   "scripts": {
