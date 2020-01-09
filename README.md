@@ -26,14 +26,17 @@ require('vh-variable')
 Use in code like this:
 
 Before
-```
-selector{
+
+```css
+selector {
     height: 100vh;
 }
 ```
+
 After
-```
-selector{
+
+```css
+selector {
     height: calc(var(--vh, 1vh) * 100);
 }
 ```
