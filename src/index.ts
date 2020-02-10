@@ -1,14 +1,19 @@
 class Resizer{
-    private static throttled = (delay:number, fn:any) => {
-        let lastCall = 0;
+    private static throttled = (threshold:number, fn:any) => {
+        let last;
+        let timeout;
         return (...args:any) => {
-            const now = new Date().getTime();
-            if (now - lastCall < delay) {
-                return;
-            }
+            const now = Date.now();
+            const shouldDelay = last && now < last + threshold;
+            const delay = shouldDelay === true ? threshold - (now - last) : 0;
 
-            lastCall = now;
-            return fn(...args);
+            const execute = () => {
+                last = now
+                fn(...args)
+            };
+
+            clearTimeout(timeout);
+            timeout = setTimeout(execute, delay);
         };
     };
 
